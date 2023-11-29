@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block cambio %}
+    {% for equipo in equipos %}
+        <h2>{{equipo.nombre}}</h2>
+        <p class="lead mb-0">
+            número de equipo {{equipo.codigo}}
+        </p>
+        <hr>
+    {% endfor %}
+
+{% endblock %}

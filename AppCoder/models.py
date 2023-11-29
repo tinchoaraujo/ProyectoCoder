@@ -6,7 +6,7 @@ class Equipo(models.Model):
     codigo = models.IntegerField(unique=True)
 
     def __str__(self):
-        return f'Equipo: {self.nombre}, Codigo: {self.codigo}'
+        return f'{self.nombre}'
 
 
 class Jugador(models.Model):
@@ -16,7 +16,7 @@ class Jugador(models.Model):
     posicion = models.CharField(max_length=30, default='')
 
     def __str__(self):
-        return f'Jugador: {self.nombre} {self.apellido}'
+        return f'{self.nombre} {self.apellido}'
 
 
 class Simpatizante(models.Model):

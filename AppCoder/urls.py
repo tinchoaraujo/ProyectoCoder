@@ -16,9 +16,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from AppCoder.views import crear_equipo, show_html
+from AppCoder.views import crear_equipo, show_html, mostrar_equipos
 
 urlpatterns = [
     path('show/', show_html),
     path('agregar_equipo/', crear_equipo),
+    path('equipos/', mostrar_equipos),
 ]
