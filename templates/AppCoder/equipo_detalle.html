@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block cambio %}
+
+    <p>El equipo es: <b>{{equipo.nombre}}</b></p>
+<p>Fundado en: {{equipo.fundado}}</p>
+<p>
+    <a href="{% url 'EquipoList' %}">Listar Equipos</a>
+</p>
+
+{% endblock %}

@@ -16,12 +16,18 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from AppCoder.views import crear_equipo, show_html, mostrar_equipos, crear_equipo_form, busqueda_equipo
+from AppCoder.views import crear_equipo, show_html, mostrar_equipos, crear_equipo_form, busqueda_equipo, EquipoList, \
+    EquipoDetalle, EquipoCreacion, EquipoActualizacion, EquipoEliminar
 
 urlpatterns = [
     path('show/', show_html),
     path('agregar_equipo/', crear_equipo),
     path('equipos/', mostrar_equipos),
+    path('equipos/listar', EquipoList.as_view(), name='EquipoList'),
+    path('equipo/<int:pk>', EquipoDetalle.as_view(), name='EquipoDetail'),
     path('buscar/', busqueda_equipo),
     path('equipo/', crear_equipo_form),
+    path('crear_equipo', EquipoCreacion.as_view(), name='EquipoCreate'),
+    path('editar/<int:pk>', EquipoActualizacion.as_view(), name='EquipoEditar'),
+    path('eliminar/<int:pk>', EquipoEliminar.as_view(), name='EquipoEliminar'),
 ]

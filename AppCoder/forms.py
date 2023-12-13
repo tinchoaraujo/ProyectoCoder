@@ -3,7 +3,7 @@ from django import forms
 
 class EquipoForm(forms.Form):
     nombre = forms.CharField()
-    codigo = forms.IntegerField()
+    fundado = forms.IntegerField()
 
 class BusquedaEquipoForm(forms.Form):
     nombre = forms.CharField()

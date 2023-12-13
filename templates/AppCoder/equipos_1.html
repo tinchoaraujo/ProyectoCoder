@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block cambio %}
+<div>
+    <form action="/app/buscar" method="GET">
+
+        <input type="text" name="nombre">
+
+        <input type="submit" value="Buscar">
+
+    </form>
+</div>
+<p>
+    <a href="{% url 'EquipoCreate' %}">Crear Equipo</a>
+</p>
+    {% for equipo in object_list %}
+        <h2>{{equipo.nombre}}</h2>
+        <p class="lead mb-0">
+            número de equipo {{equipo.fundado}}
+        </p>
+        <p>
+            <a href="{% url 'EquipoDetail' equipo.id %}">Detalle</a>
+        </p>
+        <p>
+            <a href="{% url 'EquipoEditar' equipo.id %}">Editar</a>
+        </p>
+        <p>
+            <a href="{% url 'EquipoEliminar' equipo.id %}">Eliminar</a>
+        </p>
+        <hr>
+    {% endfor %}
+
+{% endblock %}
