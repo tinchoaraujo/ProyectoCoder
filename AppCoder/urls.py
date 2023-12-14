@@ -27,7 +27,7 @@ urlpatterns = [
     path('equipo/<int:pk>', EquipoDetalle.as_view(), name='EquipoDetail'),
     path('buscar/', busqueda_equipo),
     path('equipo/', crear_equipo_form),
-    path('crear_equipo', EquipoCreacion.as_view(), name='EquipoCreate'),
+    path('crear_equipo/', EquipoCreacion.as_view(), name='EquipoCreate'),
     path('editar/<int:pk>', EquipoActualizacion.as_view(), name='EquipoEditar'),
     path('eliminar/<int:pk>', EquipoEliminar.as_view(), name='EquipoEliminar'),
 ]

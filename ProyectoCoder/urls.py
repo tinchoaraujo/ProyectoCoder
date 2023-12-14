@@ -21,4 +21,5 @@ from AppCoder.views import crear_equipo
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('app/', include('AppCoder.urls')),
+    path('accounts/', include('accounts.urls')),
 ]

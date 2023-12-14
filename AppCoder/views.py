@@ -1,3 +1,5 @@
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
@@ -7,17 +9,17 @@ from AppCoder.forms import EquipoForm, BusquedaEquipoForm
 # Create your views here.
 
 
-class EquipoList(ListView):
+class EquipoList(LoginRequiredMixin, ListView):
     model = Equipo
     template_name = 'AppCoder/equipos_1.html'
 
 
-class EquipoDetalle(DetailView):
+class EquipoDetalle(LoginRequiredMixin, DetailView):
     model = Equipo
     template_name = 'AppCoder/equipo_detalle.html'
 
 
-class EquipoCreacion(CreateView):
+class EquipoCreacion(LoginRequiredMixin, CreateView):
     model = Equipo
     success_url = '/app/equipos/listar'
     template_name = 'AppCoder/crear_equipo.html'
@@ -54,6 +56,7 @@ def crear_equipo(request):
     return redirect('/app/equipos/')
 
 
+@login_required
 def crear_equipo_form(request):
     if request.method == 'POST':
         equipo_formulario = EquipoForm(request.POST)
