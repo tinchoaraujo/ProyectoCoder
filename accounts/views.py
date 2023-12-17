@@ -1,4 +1,5 @@
 from django.contrib.auth import login, authenticate
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm
 from django.shortcuts import render, redirect
 
@@ -38,10 +39,30 @@ def register_request(request):
 
             form.save()
 
-        return redirect('EquipoList')
+            return redirect('EquipoList')
 
     form = UserRegisterForm()
     contexto = {
         'form': form
     }
     return render(request, 'accounts/registro.html', contexto)
+
+
+@login_required
+def editar_request(request):
+    if request.method == 'POST':
+        form = UserRegisterForm(request.POST)
+
+        if form.is_valid():
+
+            form.save()
+
+            return redirect('EquipoList')
+
+    user = request.user
+    form = UserRegisterForm(initial={'username': user.username, 'email': user.email})
+    contexto = {
+        'form': form
+    }
+    return render(request, 'accounts/registro.html', contexto)
+
